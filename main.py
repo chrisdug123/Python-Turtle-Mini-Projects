@@ -10,11 +10,25 @@ screen = turtle.Screen()
 screen.setup(1.0, 1.0)
 
 
-def move_and_turn(turtle,distance, angle):
-  turtle.forward(distance)
-  turtle.right(angle)
+diameter = 40
+pop_diameter = 100
 
-move_and_turn(t,100, 45)
-move_and_turn(t,50,90)
+def draw_balloon(t):
+  t.color("red")
+  t.dot(diameter)
 
+
+def inflate_balloon():
+  global diameter
+  global t
+  diameter = diameter + 10
+  draw_balloon(t)
+  if diameter >= pop_diameter:
+    t.clear()
+    diameter = 40
+    t.write("POP!")
+  
+draw_balloon(t)
+onkey(inflate_balloon, "Up")
+listen()
 screen.mainloop()
