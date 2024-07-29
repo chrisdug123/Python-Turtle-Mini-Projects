@@ -6,33 +6,66 @@ screen = turtle.Screen()
 screen.setup(1.0, 1.0)
 width=int(window_width())
 height=int(window_height())
-#100 stars, black background
-#random star size and location
-bgcolor("black")
-t.speed(40)
-def draw_star(width,height):
-  t.penup()
-  t.goto(randrange(round(-width/2),round(width /2)), randrange(round(-height/2),round(height/2)))
-  t.pendown()
-  t.color("white")
-  t.begin_fill()
-  t.circle(randrange(1,10))
-  t.end_fill()
+#Create a turtle that can move in 4 directions
+#Have an end goal
+#Have visual feedback when we reach the goal
+t.speed(0)
+move_distance=20
 
+bgcolor("#D2691E")
 
+t.penup()
+t.goto(100,200)
+t.pendown()
+t.color("blue")
+t.begin_fill()
+t.goto(300,200)
+t.goto(300,-200)
+t.goto(100,-200)
+t.goto(100,200)
+t.end_fill()
 
+t.penup()
+t.goto(-200,0)
+t.shape("turtle")
+t.color("green")
 
-for x in range(100):
-  draw_star(width,height)
-  x=x+1
+def move_up():
+  t.setheading(90)
+  t.forward(move_distance)
+  check_goal()
+
+def move_down():
+  t.setheading(270)
+  t.forward(move_distance)
+  check_goal()
   
+def move_left():
+  t.setheading(180)
+  t.forward(move_distance)
+  check_goal()
 
+def move_right():
+  t.setheading(0)
+  t.forward(move_distance)
+  check_goal()
+  
+def check_goal():
+  if t.xcor() > 100:
+    t.hideturtle()
+    t.color("white")
+    t.write("You WIN !")
+    onkey(None, "Up")
+    onkey(None, "Down")
+    onkey(None, "Left")
+    onkey(None, "Right")
+    
 
-
-
-
-
-
+onkey(move_up, "Up")
+onkey(move_down, "Down")
+onkey(move_left, "Left")
+onkey(move_right, "Right")
+listen()
 
 
 
