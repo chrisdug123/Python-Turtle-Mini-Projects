@@ -1,13 +1,26 @@
-#from random import *
-#
+from turtle import *
+import turtle
 
-#randrange(1,10)
+t = turtle.Turtle()
+screen = turtle.Screen()
+screen.setup(1.0, 1.0)
 
-#print(randrange(1,10))
+def move_and_turn(t,angle):
+  t.forward(50)
+  t.right(angle)
+
+for x in range(12):
+  move_and_turn(t,30)
 
 
-num = 0
 
-for x in range(10):
-  num = num + 1
-  print(num)
+
+
+
+
+
+
+
+
+
+screen.mainloop()
